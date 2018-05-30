@@ -1,6 +1,6 @@
 {
   "name": "vue-image-preloader",
-  "version": "0.1.2",
+  "version": "0.1.6",
   "description": "Vue image preloader component.",
   "main": "index.js",
   "scripts": {

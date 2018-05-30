@@ -41,12 +41,14 @@ export default {
 ```
 specific onload & all src onload event
 ```html
+<no-ssr>
 <image-preloader
   :id="test"
   :srcs=['https://nodejs.org/static/images/logo.svg', 'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png']
   @loaded="loadedOne"
   @loaded-all="loadedAll"
 />
+</no-ssr>
 <script>
 ...
   methods: {
