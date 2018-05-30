@@ -1,6 +1,6 @@
 <template>
 <div>
-  <img v-for="(e, i) in data" v-bind:key="i" :src="e" @load="loaded(e, i)" class="imagePreloader_components">
+  <img :style="{ content: content }" class="imagePreloader_component">
 </div>
 </template>
 
@@ -17,7 +17,8 @@ export default {
   ],
   data() {
     return  {
-      loadedCount: 0
+      loadedCount: 0,
+      loadedImgs: []
     }
   },
   computed: {
@@ -30,10 +31,14 @@ export default {
         .concat(this.imgs)
         .filter(e => { return e })
     },
+    content() {
+      return this.loadedImgs.length ? 'url(' + this.loadedImgs.join(") url(") : ''
+    }
   },
   methods: {
     loaded(src, index) {
       this.loadedCount++
+      this.loadedImgs.push(src)
       this.$emit('loaded', {
         id: this.id,
         src,
@@ -43,6 +48,16 @@ export default {
         progress: this.loadedCount / this.data.length * 100
       })
       if(this.loadedCount === this.data.length) this.$emit('loaded-all', this.id || true)
+    }
+  },
+  mounted() {
+    for(let i = this.data.length; i > 0; i--) {
+      const img = new Image()
+      const index = this.data.length - i
+      img.src = this.data[index]
+      img.onload = () => {
+        this.loaded(img.src, index)
+      }
     }
   }
 }

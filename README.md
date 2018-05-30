@@ -21,6 +21,15 @@ export default {
 }
 ```
 
+Nuxt.js
+```js
+module.exports = {
+  plugins: [
+    { src: '~plugins/vue-image-preloader-installer.js', ssr: false }
+  ]
+}
+```
+
 ## Basic Usage
 ```html
 // choose any one props type
@@ -57,8 +66,22 @@ specific onload & all src onload event
       console.log(e.progress)
     },
     loadedAll(e) {
-      console.log(e)  // ImagePreloade id or boolean
+      console.log(e)  // ImagePreloader id or boolean
     }
+  }
+...
+</script>
+```
+
+## Global Method
+`$imagePreload` global method
+```html
+<script>
+...
+  async mounted() {
+    this.$imagePreload('https://nodejs.org/static/images/logo.svg')
+      .then(r => console.log(r))  // return loaded img element
+    console.log(await this.$imagePreload('https://nodejs.org/static/images/logo.svg'))
   }
 ...
 </script>
