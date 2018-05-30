@@ -10,8 +10,5 @@
     "vue"
   ],
   "author": "RubystarAshe",
-  "license": "ISC",
-  "dependencies": {
-    "vue": "^2.5.16"
-  }
+  "license": "ISC"
 }
