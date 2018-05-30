@@ -1,19 +1,19 @@
 ## Installation
 ```
-npm install --save vue-image-preloade
+npm install --save vue-image-preloader
 ```
 
-Installing the plugin will globally add the `vue-image-preloade` component to your project.
+Installing the plugin will globally add the `vue-image-preloader` component to your project.
 
 ```js
-import imagePreloade from 'vue-image-preloade'
-Vue.use(imagePreloade)
+import imagePreloader from 'vue-image-preloader'
+Vue.use(imagePreloader)
 ```
 
 you can also import the standalone component.
 
 ```js
-import { imagePreloade } from 'vue-image-preloade'
+import { imagePreloader } from 'vue-image-preloader'
 export default {
   components: {
     imagePreloade,
