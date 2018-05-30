@@ -1,0 +1,17 @@
+{
+  "name": "vue-image-preloader",
+  "version": "0.1.0",
+  "description": "Vue image preloader component.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vue"
+  ],
+  "author": "RubystarAshe",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.5.16"
+  }
+}
