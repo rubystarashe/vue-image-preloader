@@ -35,6 +35,7 @@ export default {
     loaded(src, index) {
       this.loadedCount++
       this.$emit('loaded', {
+        id: this.id,
         src,
         index,
         count: this.loadedCount,

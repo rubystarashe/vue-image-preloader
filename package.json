@@ -1,6 +1,6 @@
 {
   "name": "vue-image-preloader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Vue image preloader component.",
   "main": "index.js",
   "scripts": {
@@ -10,5 +10,13 @@
     "vue"
   ],
   "author": "RubystarAshe",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubystarashe/vue-image-preloader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rubystarashe/vue-image-preloader/issues"
+  },
+  "homepage": "https://github.com/rubystarashe/vue-image-preloader#readme"
 }
