@@ -16,7 +16,7 @@ you can also import the standalone component.
 import { imagePreloader } from 'vue-image-preloader'
 export default {
   components: {
-    imagePreloade,
+    imagePreloader,
   },
 }
 ```

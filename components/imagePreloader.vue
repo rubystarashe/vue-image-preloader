@@ -1,6 +1,6 @@
 <template>
 <div>
-  <img v-for="(e, i) in data" v-bind:key="i" :src="e" @load="loaded(e, i)" class="imagePreloader_components"/>
+  <img v-for="(e, i) in data" v-bind:key="i" :src="e" @load="loaded(e, i)" class="imagePreloader_components">
 </div>
 </template>
 
