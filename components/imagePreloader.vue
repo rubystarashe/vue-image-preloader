@@ -32,7 +32,7 @@ export default {
         .filter(e => { return e })
     },
     content() {
-      return this.loadedImgs.length ? 'url(' + this.loadedImgs.join(") url(") : ''
+      return this.loadedImgs.length ? (this.loadedImgs.length > 1 ? 'url(' + this.loadedImgs.join(') url(') + ')' : 'url(' + this.loadedImgs[0] + ')') : ''
     }
   },
   methods: {

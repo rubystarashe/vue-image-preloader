@@ -81,7 +81,7 @@ specific onload & all src onload event
   async mounted() {
     this.$imagePreload('https://nodejs.org/static/images/logo.svg')
       .then(r => console.log(r))  // return loaded img element
-    await this.$imagePreload('https://nodejs.org/static/images/logo.svg')
+    await this.$imagePreload(['https://nodejs.org/static/images/logo.svg', 'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'])
     const el = document.getElementById('test')
     await this.$imagePreload('https://nodejs.org/static/images/logo.svg', el)
     await this.$imagePreload.reset()

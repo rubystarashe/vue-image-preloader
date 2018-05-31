@@ -16,9 +16,10 @@ export default {
         img.src = src
         img.onload = () => {
           try {
+            const content = Array.isArray(src) ? (src.length > 1 ? 'url(' + src.join(') url(') + ')' : 'url(' + src[0]) + ')' :  'url(' + src + ')'
             const el = element ? element : (document || {}).getElementById('imagePreloader_global_component')
             if(el) {
-              el.style.content = el.style.content + ' url(' + src + ')'
+              el.style.content = el.style.content + ' ' + content
             } else reject(null)
             resolve(img)
           } catch(e) {
