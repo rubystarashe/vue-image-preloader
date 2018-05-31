@@ -34,18 +34,18 @@ module.exports = {
 ```html
 // choose any one props type
 <image-preloader
-  :src='https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'
+  :src="'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'"
 />
 <image-preloader
   :src=['https://nodejs.org/static/images/logo.svg', 'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png']
 />
 <image-preloader
-  :src='https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'
-  :srcs='https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'
-  :image='https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'
-  :images='https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'
-  :img='https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'
-  :imgs='https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'
+  :src="'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'"
+  :srcs="'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'"
+  :image="'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'"
+  :images="'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'"
+  :img="'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'"
+  :imgs="'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'"
 />
 ```
 specific onload & all src onload event
@@ -81,7 +81,11 @@ specific onload & all src onload event
   async mounted() {
     this.$imagePreload('https://nodejs.org/static/images/logo.svg')
       .then(r => console.log(r))  // return loaded img element
-    console.log(await this.$imagePreload('https://nodejs.org/static/images/logo.svg'))
+    await this.$imagePreload('https://nodejs.org/static/images/logo.svg')
+    const el = document.getElementById('test')
+    await this.$imagePreload('https://nodejs.org/static/images/logo.svg', el)
+    await this.$imagePreload.reset()
+    await this.$imagePreload.reset(el)
   }
 ...
 </script>

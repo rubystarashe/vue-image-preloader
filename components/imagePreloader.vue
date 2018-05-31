@@ -1,6 +1,6 @@
 <template>
 <div>
-  <img :style="{ content: content }" class="imagePreloader_component">
+  <img :style="{ content: content }" class="imagePreloader_components" :id="id">
 </div>
 </template>
 

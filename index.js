@@ -15,13 +15,30 @@ export default {
         const img = new Image()
         img.src = src
         img.onload = () => {
-          const el = element ? element : (document || {}).getElementById('imagePreloader_global_component')
-          if(el) {
-            el.style.content = el.style.content + ' url(' + src + ')'
+          try {
+            const el = element ? element : (document || {}).getElementById('imagePreloader_global_component')
+            if(el) {
+              el.style.content = el.style.content + ' url(' + src + ')'
+            } else reject(null)
+            resolve(img)
+          } catch(e) {
+            reject(e)
           }
-          resolve(img)
         }
         img.onerror = reject
+      })
+    }
+    Vue.prototype.$imagePreload.reset = (element = null) => {
+      return new Promise((resolve, reject) => {
+        try {
+          const el = element ? element : (document || {}).getElementById('imagePreloader_global_component')
+          if(el) {
+            el.style.content = ''
+          } else reject(null)
+          resolve(true)
+        } catch(e) {
+          reject(e)
+        }
       })
     }
   }
