@@ -32,7 +32,8 @@ module.exports = {
 
 ## Basic Usage
 ```html
-// choose any one props type
+<!-- choose any one props type -->
+
 <image-preloader
   :src="'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'"
 />
@@ -81,7 +82,10 @@ specific onload & all src onload event
   async mounted() {
     this.$imagePreload('https://nodejs.org/static/images/logo.svg')
       .then(r => console.log(r))  // return loaded img element
-    await this.$imagePreload(['https://nodejs.org/static/images/logo.svg', 'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'])
+    await this.$imagePreload([
+      'https://nodejs.org/static/images/logo.svg',
+      'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'
+    ], (e => console.log(e))) // element, loaded src, src index, loaded count, src list length, progress
     const el = document.getElementById('test')
     await this.$imagePreload('https://nodejs.org/static/images/logo.svg', el)
     await this.$imagePreload.reset()

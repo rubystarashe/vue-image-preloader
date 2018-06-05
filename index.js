@@ -10,23 +10,38 @@ export default {
     globalComponentsStyle.zIndex = -1
     
     Vue.component('imagePreloader', imagePreloader)
-    Vue.prototype.$imagePreload = (src, element = null) => {
+    Vue.prototype.$imagePreload = (srcs, element = null, cb = () => null) => {
+      if(typeof element === "function") {
+        cb = element
+        element = null
+      }
       return new Promise((resolve, reject) => {
-        const img = new Image()
-        img.src = src
-        img.onload = () => {
-          try {
-            const content = Array.isArray(src) ? (src.length > 1 ? 'url(' + src.join(') url(') + ')' : 'url(' + src[0]) + ')' :  'url(' + src + ')'
-            const el = element ? element : (document || {}).getElementById('imagePreloader_global_component')
-            if(el) {
-              el.style.content = el.style.content + ' ' + content
-            } else reject(null)
-            resolve(img)
-          } catch(e) {
-            reject(e)
+        const data = typeof srcs === "array" ? new Array(srcs) : srcs
+        const el = element ? element : (document || {}).getElementById('imagePreloader_global_component')
+        try {
+          let count = 0
+          for(let i = 0; i < data.length; i++) {
+            const src = data[i]
+            const img = new Image()
+            img.src = src
+            img.onload = async () => {
+              el.style.content = el.style.content + ' url(' + src + ')'
+              count++
+              await cb({
+                element,
+                src,
+                index: i,
+                count,
+                length: data.length,
+                progress: count / data.length * 100
+              })
+              if(count == data.length) resolve(element ? element : true)
+            }
+            img.onerror = reject
           }
+        } catch(e) {
+          reject(e)
         }
-        img.onerror = reject
       })
     }
     Vue.prototype.$imagePreload.reset = (element = null) => {
@@ -36,7 +51,7 @@ export default {
           if(el) {
             el.style.content = ''
           } else reject(null)
-          resolve(true)
+          resolve(element ? element : true)
         } catch(e) {
           reject(e)
         }
