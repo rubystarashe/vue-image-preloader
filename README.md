@@ -51,6 +51,40 @@ module.exports = {
 ```
 specific onload & all src onload event
 ```html
+<template>
+...
+<image-preloader
+  :id="test"
+  :srcs=['https://nodejs.org/static/images/logo.svg', 'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png']
+  @loaded="loadedOne"
+  @loaded-all="loadedAll"
+/>
+...
+</template>
+
+<script>
+import { imagePreloader } from 'vue-image-preloader'
+export default {
+  components: {
+    imagePreloader
+  }
+...
+  methods: {
+    loadedOne(e) {
+      console.log(e)  // ImagePreloader id, loaded src, src index, loaded count, src list length, progress
+      console.log(e.progress)
+    },
+    loadedAll(e) {
+      console.log(e)  // ImagePreloader id or boolean
+    }
+  }
+...
+</script>
+```
+with global component
+```html
+<template>
+...
 <no-ssr>
 <image-preloader
   :id="test"
@@ -59,6 +93,9 @@ specific onload & all src onload event
   @loaded-all="loadedAll"
 />
 </no-ssr>
+...
+</template>
+
 <script>
 ...
   methods: {
