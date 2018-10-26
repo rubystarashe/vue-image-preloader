@@ -3,7 +3,7 @@
 npm install --save vue-image-preloader
 ```
 
-Installing the plugin will globally add the `vue-image-preloader` component to your project.
+Installing the plugin will globally add the `vue-image-preloader` component to your project.  
 플러그인을 전역적으로 설치하여 `vue-image-preloader` 컴포넌트를 사용할 수 있습니다.
 
 ```js
@@ -11,7 +11,7 @@ import imagePreloader from 'vue-image-preloader'
 Vue.use(imagePreloader)
 ```
 
-you can also import the standalone component.
+you can also import the standalone component.  
 단일 컴포넌트에 설치하여 사용할 수도 있습니다.
 
 ```js
@@ -51,7 +51,7 @@ module.exports = {
   :imgs="'https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png'"
 />
 ```
-specific onload & all src onload event
+specific onload & all src onload event  
 특정 로드와 전체 로드에 대한 onload 이벤트를 사용할 수 있습니다.
 ```html
 <template>
@@ -84,7 +84,7 @@ export default {
 ...
 </script>
 ```
-with global component
+with global component  
 전역 컴포넌트로 사용할 경우입니다.
 ```html
 <template>
@@ -116,7 +116,7 @@ with global component
 ```
 
 ## Global Method
-`$imagePreload` global method
+`$imagePreload` global method  
 플러그인을 전역적으로 설치했다면, `$imagePreload` 메소드를 사용할 수도 있습니다.
 ```html
 <script>
